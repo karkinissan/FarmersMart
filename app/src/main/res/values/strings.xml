@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">FarmersMart</string>
+    <!--Label for title of Editor Activity-->
+    <string name="title_editor">Add a Product</string>
+    <!--Label for overflow menu option that saves a product-->
+    <string name="action_save">Save</string>
+    <!--Label for overflow menu option that deletes a product-->
+    <string name="action_delete">Delete</string>
+
+
+    <string name="log_out">Log Out</string>
+    <string name="log_in">Log In</string>
+    <string name="location">Location</string>
+    <string name="price">Price</string>
+    <string name="rate">Rate</string>
+    <string name="currency">"Rs "</string>
+    <string name="pick_an_amount">Pick an amount</string>
+    <string name="total">Total</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="product">Product</string>
+    <string name="from">From</string>
+    <string name="weight">Weight</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="additional_costs">Additional Costs</string>
+    <string name="transportation_charge">Transportation Charge</string>
+    <string name="service_charge">Service Charge</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="cancel">Cancel</string>
+    <string name="purchase">Purchase</string>
+    <string name="expiry_date">"Expiry Date: "</string>
+    <string name="minimum_amount">Minimum Amount</string>
+    <string name="minimum_quantity">Minimum \nQuantity</string>
+    <string name="your_choice">Your choice</string>
+    <string name="maximum_amount">Maximum Amount</string>
+    <string name="maximum_quantity">Maximum Quantity</string>
+    <string name="additional_charges">Additional Charges</string>
+    <string name="transportation">Transportation</string>
+    <string name="service">Service</string>
+    <string name="checkout">Checkout</string>
+    <string name="seller_s_location">Seller\'s Location</string>
+    <string name="quantity">Quantity</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="please_enter_your_contact_details">"Please enter your contact details"</string>
+    <string name="go_back_question">Go back?</string>
+    <string name="order_confirmed_message">Thank you for placing an order on FarmersMart. A representative will soon contact you to confirm the order.</string>
+    <string name="okay">Okay</string>
+    <string name="please_fill_out_all_the_fields">Please fill out all fields.</string>
+    <string name="do_you_want_to_go_back">Do you want to go back?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel_order_confirmation">Are you sure you want to cancel the order?</string>
+    <string name="title_add_a_product">Add a Product</string>
+    <string name="kg">Kg</string>
+    <string name="tonne">Tonne</string>
+    <string name="please_pick_a_date">Please pick a date</string>
+    <string name="please_pick_a_time">Please pick a time</string>
+    <string name="pick_future_date_time">Please pick a Date/Time later than current Date/Time.</string>
+    <string name="discard_and_quit_dialog">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+    <string name="logged_in">Logged In</string>
+    <string name="list_item_quantity">"Quantity: "</string>
+    <string name="list_item_price">"Price: "</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_language_label">Language</string>
+    <string name="settings_language_key" translatable="false">appLanguage</string>
+    <string name="settings_language_default" translatable="false">English</string>
+    <string name="per">Per</string>
+    <string name="pick_a_product">Pick a product</string>>
+    <string name="apple">Apple</string>
+    <string name="banana">Banana</string>
+    <string name="cauliflower">Cauliflower</string>
+    <string name="potatoes">Potatoes</string>
+    <string name="tomatoes">Tomatoes</string>
+
+    <string-array name="product_names">
+        <item>@string/pick_a_product</item>
+        <item>@string/apple</item>
+        <item>@string/banana</item>
+        <item>@string/cauliflower</item>
+        <item>@string/potatoes</item>
+        <item>@string/tomatoes</item>
+    </string-array>
+
+</resources>

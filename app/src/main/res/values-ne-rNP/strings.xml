@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FarmersMart</string>
+    <!--Label for title of Editor Activity-->
+    <string name="title_editor">उत्पादन थप्नुहोस्</string>
+    <!--Label for overflow menu option that saves a product-->
+    <string name="action_save">शेभ</string>
+    <!--Label for overflow menu option that deletes a product-->
+    <string name="action_delete">हताऔ</string>
+
+
+    <string name="location">स्थान</string>
+    <string name="price">मूल्य</string>
+    <string name="rate">"दर"</string>
+    <string name="currency">"रु "</string>
+    <string name="pick_an_amount">मूल्य  छान्नुहोस्</string>
+    <string name="total">कुल</string>
+    <string name="order_summary">आदेश सारांश</string>
+    <string name="product">उत्पादन</string>
+    <string name="from">बाट</string>
+    <string name="weight">वजन</string>
+    <string name="subtotal">उप कुल</string>
+    <string name="additional_costs">थप लागत</string>
+    <string name="transportation_charge">ढुवानी शुल्क</string>
+    <string name="service_charge">सेवा शुल्क</string>
+    <string name="grand_total">कूल जम्मा</string>
+    <string name="name">नाम</string>
+    <string name="address">ठेगाना</string>
+    <string name="phone_number">फोन नम्बर</string>
+    <string name="cancel">रद्द गर्नुहोस्</string>
+    <string name="purchase">खरिद गर्नुहोस्</string>
+    <string name="expiry_date">"समाप्ति मिति: "</string>
+    <string name="minimum_amount">न्यूनतम मात्रा</string>
+    <string name="your_choice">तपाईको छनौट</string>
+    <string name="maximum_amount">अधिकतम मात्रा</string>
+    <string name="additional_charges">थप शुल्कहरू</string>
+    <string name="transportation">ढुवानी</string>
+    <string name="service">सेवा</string>
+    <string name="checkout">चेक आउट</string>
+    <string name="seller_s_location">बिक्रेताको स्थान</string>
+    <string name="quantity">मात्रा</string>
+    <string name="pick_date">मिति छान्नुहोस्</string>
+    <string name="pick_time">समय छान्नुहोस्</string>
+    <string name="please_enter_your_contact_details">"कृपया आफ्नो सम्पर्क विवरण पेस गर्नुहोस्"</string>
+    <string name="go_back_question">पछाडी जाउ?</string>
+    <string name="order_confirmed_message">किसान मार्ट राख्न को लागी धन्यवाद।  अर्डर आएमा तुरुन्तै सम्पर्क गर्ने चम ।
+</string>
+    <string name="okay">हुन्छ</string>
+    <string name="please_fill_out_all_the_fields">कृपया सबै क्षेत्रहरू भर्नुहोस्</string>
+    <string name="do_you_want_to_go_back">के तपाईं पछाडि जान चाहनुहुन्छ?</string>
+    <string name="yes">हो</string>
+    <string name="no">होइन</string>
+    <string name="cancel_order_confirmation">के तपाईं पक्का अर्डर रद्द गर्न चाहनुहुन्छ?</string>
+    <string name="title_add_a_product">उत्पादन थप्नुहोस्</string>
+    <string name="kg">के.जि</string>
+    <string name="tonne">"टन"</string>
+    <string name="please_pick_a_date">कृपया एक मिति छान्नुहोस्</string>
+    <string name="please_pick_a_time">कृपया समय छान्नुहोस्</string>
+    <string name="pick_future_date_time">कृपया वर्तमान  मिति/ समय भन्दा पछि मिति / समय छान्नुहोस्.</string>
+    <string name="discard_and_quit_dialog">के तपाईं फिर्ता जान चाहनु हुन्छ?</string>
+    <string name="discard">त्याग्नुहोस्</string>
+    <string name="keep_editing">सम्पादन राख्नुहोस्</string>
+    <string name="logged_in">लग इन</string>
+    <string name="list_item_quantity">"मात्रा: "</string>
+    <string name="list_item_price">"मूल्य: "</string>
+
+    <string name="apple">स्याऊ</string>
+
+
+    <string name="log_in">लग इन</string>
+    <string name="log_out">"लग"</string>
+    <string name="settings_menu_item">सेत्तिङ</string>
+    <string name="settings_title">सेत्तिङ</string>
+    <string name="settings_language_label">भाषा</string>
+    <string name="maximum_quantity">अधिकतम मात्रा</string>
+    <string name="minimum_quantity">न्यूनतम मात्रा</string>
+    <string name="per">प्रति</string>
+    <string name="pick_a_product">एक उत्पादन छान्नुहोस्</string>
+    <string name="banana">केरा</string>
+    <string name="cauliflower">काउली</string>
+    <string name="potatoes">आलु</string>
+    <string name="tomatoes">टमाटर</string>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "921179722366",
+    "firebase_url": "https://farmersmart-9b619.firebaseio.com",
+    "project_id": "farmersmart-9b619",
+    "storage_bucket": "farmersmart-9b619.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921179722366:android:a2f1575518286f07",
+        "android_client_info": {
+          "package_name": "com.example.nissan.farmersmart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921179722366-2rcpcsumfsv5cg1khn1q5if68utsbo9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nissan.farmersmart",
+            "certificate_hash": "91b67e628abdda0f82072642730684fc59c5eeb9"
+          }
+        },
+        {
+          "client_id": "921179722366-vnb4sbhnhmhcrog9abo0gmo15ki594is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABQkUTNCHK9jDJ6ZHj5w-bAOSxXdH1b7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921179722366-vnb4sbhnhmhcrog9abo0gmo15ki594is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
