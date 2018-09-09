@@ -1,10 +1,14 @@
 package com.example.nissan.farmersmart;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
@@ -114,6 +118,7 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setLocale();
         setContentView(R.layout.activity_editor);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -207,13 +212,14 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = (String) adapterView.getItemAtPosition(i);
                 if (!TextUtils.isEmpty(selection)) {
-                    mSelectedProductName = selection;
+
+                    mSelectedProductName = getProductNameInEnglish();
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                mSelectedProductName = getString(R.string.apple);
+                mSelectedProductName = "Apple";
 
             }
         });
@@ -233,7 +239,7 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
                         mMinimumQuantityUnit.setText(R.string.kg);
                         mRateWeightUnit.setText(R.string.kg);
                     } else if (selection.equals(getString(R.string.tonne))) {
-                        mWeightUnit = getString(R.string.tonne);
+                        mWeightUnit = "Tonne";
                         mMaximumQuantityUnit.setText(R.string.tonne);
                         mMinimumQuantityUnit.setText(R.string.tonne);
                         mRateWeightUnit.setText(R.string.tonne);
@@ -243,7 +249,7 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                mWeightUnit ="Tonne";
+                mWeightUnit ="Kg";
                 mMaximumQuantityUnit.setText(R.string.kg);
                 mMinimumQuantityUnit.setText(R.string.kg);
             }
@@ -698,10 +704,10 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
 
     private void onSignedOutCleanup() {
         mUsername = ANONYMOUS;
-        detatchDatabaseReadListener();
+        detachDatabaseReadListener();
     }
 
-    private void detatchDatabaseReadListener() {
+    private void detachDatabaseReadListener() {
         if (mChildEventListener != null) { //only detatch if its been attached
             mProductsDatabaseReference.removeEventListener(mChildEventListener);
             mChildEventListener = null;
@@ -712,6 +718,7 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
     @Override
     protected void onResume() {
         super.onResume();
+//        setLocale();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
@@ -721,7 +728,40 @@ public class EditorActivity extends AppCompatActivity implements DatePickerDialo
         if (mAuthStateListener != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
         }
-        detatchDatabaseReadListener();
+        detachDatabaseReadListener();
     }
 
+    private String getProductNameInEnglish(){
+        Configuration config = getResources().getConfiguration();
+
+        // Save original location
+        Locale originalLocal = config.locale;
+
+        // Set new one for single using
+        config.locale = new Locale("en");
+        getResources().updateConfiguration(config, null);
+
+        // Get search_options array for english values
+        String[] searchOptionsEn = getResources().getStringArray(R.array.product_names);
+
+        // Set previous location back
+        config.locale = originalLocal;
+        getResources().updateConfiguration(config, null);
+
+        String valueForSendingToServer = searchOptionsEn[mProductNameView.getSelectedItemPosition()];
+        return valueForSendingToServer;
+    }
+    private void setLocale(){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String locale = sharedPrefs.getString(getString(R.string.settings_language_key),
+                getString(R.string.settings_language_default));
+//        Locale current = getResources().getConfiguration().locale;
+//        if (!current.toString().equals(locale)){
+            LocaleManager.setLocale(this,locale);
+//        }
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ChangeLangContextWrapper.wrap(newBase));
+    }
 }

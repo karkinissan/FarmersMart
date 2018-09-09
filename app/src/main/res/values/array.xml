@@ -4,6 +4,10 @@
         <item>English</item>
         <item>Nepali</item>
     </string-array>
+    <string-array name="settings_language_values">
+        <item>en</item>
+        <item>ne</item>
+    </string-array>
     <string-array name="weight_units">
         <item>Kg</item>
         <item>Tonne</item>

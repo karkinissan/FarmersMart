@@ -2,10 +2,11 @@ package com.example.nissan.farmersmart;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.Log;
@@ -53,6 +54,7 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setLocale();
         setContentView(R.layout.activity_checkout_acvitity);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -222,4 +224,19 @@ public class CheckoutActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setLocale();
+    }
+
+    private void setLocale(){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String locale = sharedPrefs.getString(getString(R.string.settings_language_key),
+                getString(R.string.settings_language_default));
+//        Locale current = getResources().getConfiguration().locale;
+//        if (!current.toString().equals(locale)){
+            LocaleManager.setLocale(this,locale);
+//        }
+    }
 }

@@ -68,9 +68,9 @@
 
 
     <string name="log_in">लग इन</string>
-    <string name="log_out">"लग"</string>
-    <string name="settings_menu_item">सेत्तिङ</string>
-    <string name="settings_title">सेत्तिङ</string>
+    <string name="log_out">"लग आउट"</string>
+    <string name="settings_menu_item">सेटिङ्</string>
+    <string name="settings_title">सेटिङ्</string>
     <string name="settings_language_label">भाषा</string>
     <string name="maximum_quantity">अधिकतम मात्रा</string>
     <string name="minimum_quantity">न्यूनतम मात्रा</string>
@@ -80,4 +80,5 @@
     <string name="cauliflower">काउली</string>
     <string name="potatoes">आलु</string>
     <string name="tomatoes">टमाटर</string>
+    <string name="select_the_app_language">कृपया भाषा छान्नुहोस्</string>
 </resources>

@@ -1,17 +1,14 @@
 package com.example.nissan.farmersmart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,7 +31,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,21 +58,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setLocale();
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        locale = sharedPrefs.getString(getString(R.string.settings_language_key),
-                getString(R.string.settings_language_default));
-        Log.v(LOG_TAG,"Locale: "+locale);
-//        switch (locale) {
-//            case "English":
-//                Locale localeEN = new Locale("en_US");
-//                setLocaleOnCreate(localeEN);
-//                break;
-//            case "Nepali":
-//                Locale localeNEP = new Locale("ne_NP");
-//                setLocaleOnCreate(localeNEP);
-//                break;
-//        }
+        mProgressBar = findViewById(R.id.progressBar);
+
         mUsername = ANONYMOUS;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -98,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         productsListView = findViewById(R.id.list_view_product);
 //        productsListView.setEmptyView(emptyTextView);
 
-        mProgressBar = findViewById(R.id.progressBar);
         final List<Product> products = new ArrayList<>();
         mProductAdapter = new ProductAdapter(this, R.layout.list_item, products);
         productsListView.setAdapter(mProductAdapter);
@@ -108,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ProductDetails.class);
                 Product selectedProduct = products.get(position);
                 intent.putExtra("product", selectedProduct);
+                mProgressBar.setVisibility(ProgressBar.GONE);
                 startActivity(intent);
             }
         });
@@ -120,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
                 // User is signed in.
                 onSignedInInitialize();
 
-
             }
         };
+
 
     }
 
@@ -134,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onSignedOutCleanup() {
         mUsername = ANONYMOUS;
-        detatchDatabaseReadListener();
+        detachDatabaseReadListener();
     }
 
 
@@ -146,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     Product product = dataSnapshot.getValue(Product.class);
                     product.setProductFirebaseKey(dataSnapshot.getKey());
                     mProductAdapter.insert(product, 0); //0  = new appears at top
+                    mProgressBar.setVisibility(View.GONE);
 
                 }
 
@@ -169,12 +155,11 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             };
-            mProgressBar.setVisibility(ProgressBar.INVISIBLE);
             mProductsDatabaseReference.addChildEventListener(mChildEventListener);
         }
     }
 
-    private void detatchDatabaseReadListener() {
+    private void detachDatabaseReadListener() {
         if (mChildEventListener != null) { //only detatch if its been attached
             mProductsDatabaseReference.removeEventListener(mChildEventListener);
             mChildEventListener = null;
@@ -195,22 +180,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+//        setLocale();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String locale_RES = sharedPrefs.getString(getString(R.string.settings_language_key),
-                getString(R.string.settings_language_default));
-//        if (!locale.equals(locale_RES)) {
-//            switch (locale_RES) {
-//                case "English":
-//                    Locale localeEN = new Locale("en_US");
-//                    setLocale(localeEN);
-//                    break;
-//                case "Nepali":
-//                    Locale localeNEP = new Locale("ne-rNP");
-//                    setLocale(localeNEP);
-//                    break;
-//            }
-//        }
+        mProgressBar.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -219,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         if (mAuthStateListener != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
         }
-        detatchDatabaseReadListener();
+        detachDatabaseReadListener();
         mProductAdapter.clear();
     }
 
@@ -278,24 +251,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void setLocaleOnCreate(Locale locale) {
-        Locale.setDefault(locale);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = locale;
-        res.updateConfiguration(conf, dm);
+    private void setLocale() {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String locale = sharedPrefs.getString(getString(R.string.settings_language_key),
+                getString(R.string.settings_language_default));
+//        Locale current = getResources().getConfiguration().locale;
+//        Log.v(LOG_TAG,"Current locale "+current);
+//        Log.v(LOG_TAG,"Setting language to "+locale);
+//        if (!current.toString().equals(locale)) {
+        LocaleManager.setLocale(this, locale);
+//        }
     }
 
-    public void setLocale(Locale locale) {
-        Locale.setDefault(locale);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = locale;
-        res.updateConfiguration(conf, dm);
-        recreate();
-        //finish();
-        //startActivity(getIntent());
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ChangeLangContextWrapper.wrap(newBase));
     }
 }

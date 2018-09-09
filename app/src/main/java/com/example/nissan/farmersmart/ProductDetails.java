@@ -1,7 +1,10 @@
 package com.example.nissan.farmersmart;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -39,6 +42,7 @@ public class ProductDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setLocale();
         setContentView(R.layout.product_details);
 
         final Intent intent = getIntent();
@@ -188,5 +192,24 @@ public class ProductDetails extends AppCompatActivity {
             mTotal.setText(String.valueOf(0));
         }
     }
+    private void setLocale(){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String locale = sharedPrefs.getString(getString(R.string.settings_language_key),
+                getString(R.string.settings_language_default));
+//        Locale current = getResources().getConfiguration().locale;
+//        if (!current.toString().equals(locale)){
+            LocaleManager.setLocale(this,locale);
+//        }
+    }
 
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+//        setLocale();
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(ChangeLangContextWrapper.wrap(newBase));
+    }
 }

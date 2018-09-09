@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -22,6 +21,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     private Context context;
     public ProductAdapter(@NonNull Context context, int resource, @NonNull List<Product> objects) {
         super(context, resource, objects);
+
         this.context = context;
     }
 
@@ -45,7 +45,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
                 .load(product.getPhotoUrl())
                 .into(photoImageView);*/
 //        System.out.println(product.printAll());
-        Log.v("ProductAdapter",product.getName().toLowerCase());
         nameTextView.setText(product.getName());
         locationTextView.setText(product.getLocation());
         quantityTextView.setText(R.string.list_item_quantity);
@@ -111,14 +110,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 //        return formattedExpiryDate;
     }
 
-    private String getStringResourceByName(String aString) {
-        String packageName = context.getPackageName();
-        int resId = context.getResources().getIdentifier(aString, "string", packageName);
-        Log.v("ProductAdapter",""+resId);
-        if (resId == 0) {
-            return aString;
-        } else {
-            return context.getString(resId);
-        }
-    }
+
+
+
 }

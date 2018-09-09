@@ -6,8 +6,8 @@
         android:key="@string/settings_language_key"
         android:title="@string/settings_language_label"
         android:defaultValue="@string/settings_language_default"
-        android:summary="Select the app language"
+        android:summary="@string/select_the_app_language"
         android:entries="@array/settings_language_choices"
-        android:entryValues="@array/settings_language_choices"/>
+        android:entryValues="@array/settings_language_values"/>
 
 </PreferenceScreen>
